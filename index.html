@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<title>Plese Login - Day 1 Sign In</title>
+
+	<!-- Google Fonts -->
+		<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Custom Stylesheet -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+
+    <div class="panel panel-default">
+			<div class="login-box animated fadeInUp">
+      <div class="panel-heading">
+        <h2 class="panel-title">Sign in to the system</h2>
+      </div>
+
+        <form class="" action="#" method="post">
+          <div class="form-group">
+						<i class="material-icons">assignment_ind</i>
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" placeholder="">
+            <p class="help-block">Help text here.</p>
+          </div>
+          <div class="form-group">
+						<i class="material-icons">https</i>
+            <label for="passoword">Passowrd</label>
+            <input type="password" class="form-control" id="password" placeholder="">
+            <p class="help-block">Help text here.</p>
+          </div>
+          <div class="form-group">
+            <button type="button" id="signin" class="btn btn-primary" name="button">Sign In</button>
+          </div>
+        </form>
+      </div>
+      <div class="panel-footer"></div>
+    </div>
+    <div id="err" style="display:none" class="alert alert-danger alert-dismissable fade in">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>
+
+      Please check your password.
+    </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $("#signin").click(function() {
+        var url = "http://membershipwebapi977290.azurewebsites.net/api/Members/signin?";
+        url += "username=" + $("#username").val();
+        url += "&password=" + $("#password").val();
+        console.log(url);
+        $.get(url, function(data, status) {
+          console.log(data);
+          if(data == true){
+            //Goto User's info
+
+          }else{
+            //Goto Sign up
+            $("#err").show();
+            //window.location.href = "signup.html";
+          }
+        });
+      });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+
+
+
+<script>
+	$(document).ready(function () {
+    	$('#logo').addClass('animated fadeInDown');
+    	$("input:text:visible:first").focus();
+	});
+	$('#username').focus(function() {
+		$('label[for="username"]').addClass('selected');
+	});
+	$('#username').blur(function() {
+		$('label[for="username"]').removeClass('selected');
+	});
+	$('#password').focus(function() {
+		$('label[for="password"]').addClass('selected');
+	});
+	$('#password').blur(function() {
+		$('label[for="password"]').removeClass('selected');
+	});
+</script>
+
+</html>
